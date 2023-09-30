@@ -9,7 +9,7 @@ import os
 sys.path.append('..')
 
 app = FastAPI()
-dir = Path(__file__) / 'photoHolder'
+dir = Path(__file__).parent / 'photoHolder'
  
  
 @app.post("/")
@@ -21,7 +21,7 @@ def read_root(file: UploadFile):
         new_file.close()
         fileDir = Path(dir / fileName)
 
-        return fileDir
+        return "successful"
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
